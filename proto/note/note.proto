@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package note;
+
+option go_package = "emil.note.v1;notes";
+
+import "google/protobuf/timestamp.proto";
+
+service Note{
+  rpc CreateNote(CreateNoteRequest) returns (CreateNoteResponse);
+  rpc ReadNote(ReadNoteRequest) returns (ReadNoteResponse);
+  rpc DeleteNote(DeleteNoteRequest) returns (DeleteNoteResponse);
+}
+
+
+message CreateNoteRequest{
+  string content = 1;
+  google.protobuf.Timestamp created_at = 2;
+}
+
+message CreateNoteResponse{
+  int64 note_id = 1;
+}
+
+message ReadNoteRequest{
+  int64 note_id = 1;
+}
+
+message ReadNoteResponse{
+  string content = 1;
+}
+
+message DeleteNoteRequest{
+  int64 note_id = 1;
+}
+
+message DeleteNoteResponse{
+  string status = 1;
+}
+

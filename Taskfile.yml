@@ -1,0 +1,9 @@
+version: "3"
+
+tasks:
+  generate:
+    aliases:
+      - gen
+    desc: "create proto-contract"
+    cmds:
+      - protoc -I=./proto_notes/proto --go_out=./proto_notes/gen/go --go_opt=paths=source_relative --go-grpc_out=./proto_notes/gen/go --go-grpc_opt=paths=source_relative proto_notes/proto/note/note.proto
